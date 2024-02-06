@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Exercise 1: Crabs Data | STATS5099 Data Mining and Machine Learning</title>
   <meta name="description" content="2 Exercise 1: Crabs Data | STATS5099 Data Mining and Machine Learning" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Exercise 1: Crabs Data | STATS5099 Data Mining and Machine Learning" />
   <meta property="og:type" content="book" />
@@ -117,6 +117,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
@@ -142,11 +146,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="exercise-1-crabs-data.html"><a href="exercise-1-crabs-data.html#pruning"><i class="fa fa-check"></i><b>2.1</b> Pruning</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="exercise-2-titanic-data.html"><a href="exercise-2-titanic-data.html"><i class="fa fa-check"></i><b>3</b> Exercise 2: Titanic Data</a></li>
-<li class="chapter" data-level="4" data-path="solution.html"><a href="solution.html"><i class="fa fa-check"></i><b>4</b> Solution</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="solution.html"><a href="solution.html#exercise-1"><i class="fa fa-check"></i><b>4.1</b> Exercise 1</a></li>
-<li class="chapter" data-level="4.2" data-path="solution.html"><a href="solution.html#exercise-2"><i class="fa fa-check"></i><b>4.2</b> Exercise 2</a></li>
-</ul></li>
 </ul>
 
       </nav>
@@ -178,10 +177,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>BD: body depth (mm).</li>
 </ul>
 <p>This data can be extracted from the <code>MASS</code> library via:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="exercise-1-crabs-data.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb4-2"><a href="exercise-1-crabs-data.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(crabs)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="exercise-1-crabs-data.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb4-2"><a href="exercise-1-crabs-data.html#cb4-2" tabindex="-1"></a><span class="fu">data</span>(crabs)</span></code></pre></div>
 <p>We are interested in predicting the sex of the crab based on the last 5 variables, so we create a data frame of these variables to be used.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="exercise-1-crabs-data.html#cb5-1" aria-hidden="true" tabindex="-1"></a>data.crabs <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(crabs[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="exercise-1-crabs-data.html#cb5-1" tabindex="-1"></a>data.crabs <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(crabs[, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">8</span>)])</span></code></pre></div>
 <p><strong>Task</strong></p>
 <ol style="list-style-type: decimal">
 <li>Split the data into training, validation and test data sets (50%, 25%, 25% for each set).</li>
@@ -208,7 +207,7 @@ Hint
 <pre><code>##       FL   RW   CL   CW   BD
 ## 150 23.1 15.7 47.6 52.8 21.6</code></pre>
 <p>You can also check the result by using the <code>predict</code> function in <code>R</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="exercise-1-crabs-data.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(crabs.rt, <span class="at">newdata=</span>valid.crab[<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>],<span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="exercise-1-crabs-data.html#cb7-1" tabindex="-1"></a><span class="fu">predict</span>(crabs.rt, <span class="at">newdata=</span>valid.crab[<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>],<span class="at">type=</span><span class="st">&quot;class&quot;</span>)</span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
 <li>How could you determine if the classification tree is under-fitting or overfitting?</li>
 </ol>
@@ -240,7 +239,7 @@ Hint
 <ol start="7" style="list-style-type: decimal">
 <li>The complexity parameter (cp) table for the fitted tree can be produced by using <code>printcp</code>. Given the output from a fully grown tree, decide the appropriate cp value using both the minimum error strategy and the smallest tree strategy.</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="exercise-1-crabs-data.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(Full_tree)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="exercise-1-crabs-data.html#cb8-1" tabindex="-1"></a><span class="fu">printcp</span>(Full_tree)</span></code></pre></div>
 <pre><code>## 
 ## Classification tree:
 ## rpart(formula = sex ~ FL + RW + CL + CW + BD, data = train.crab, 
@@ -287,7 +286,7 @@ Hint
 <br></p></li>
 </ol>
 <p>We could also choose the cp value according to the cp plot. The minimum error strategy refers to the cp value which has the lowest X-val Relative Error. The smallest tree strategy refers to the largest cp value which is under the dashed line; the intercept of this line equals to the minimum xerror plus its standard deviation.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="exercise-1-crabs-data.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(Full_tree)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="exercise-1-crabs-data.html#cb10-1" tabindex="-1"></a><span class="fu">plotcp</span>(Full_tree)</span></code></pre></div>
 <p><img src="main_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Prune the fully grown classification tree using the cp value found from the smallest tree strategy. Calculate sensitivity and specificity for training and validation sets again and compare to the results in Task 5.</li>
@@ -525,20 +524,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

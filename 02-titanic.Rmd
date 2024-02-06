@@ -15,11 +15,15 @@ The Titanic data can be downloaded from the `titanic` package in R. Once you do 
 * Cabin: Cabin
 * Embarked: Port of Embarkation (C = Cherbourg; Q = Queenstown; S = Southampton)
 
-Your task is to create a model that predicts who survives and who dies during the Titanic event using bagging and random forest, and compare between the three approaches.
+Your task is to create a model that predicts who survives and who dies during the Titanic event using bagging and random forest, and compare between the two approaches.
 
 **Task**
 
 1. Perform some exploratory analysis on this data. In particular, understand the variable type, distribution of each variable, and identify which variables may be useful in predicting survival status. 
+
+`r hide("Hint")`
+Try `str`, `skim`, `summary` for numerical summaries and `plot`, `pairs` for graphical summaries.
+`r unhide()`
 
 2. Split the training data `titanic_train` further into a training (80%) and validation (20%) set. 
 <br>
@@ -34,7 +38,8 @@ train.imputed <- na.roughfix(train) #train: training data after training/validat
 3. Apply bagging and random forest to the imputed training data (`train.imputed`). Which method would you prefer in this case? 
 
 `r hide("Hint")`
-Use the command `randomForest` for bagging and random forest. Remember to change the argument `mtry` when applying bagging. 
+a. Use the command `randomForest` for building a bagging and random forest classifier. Remember to change the argument `mtry` when applying bagging. 
+b. Compare the two methods based on some appropriate evaluation criteria. 
 `r unhide()`
 
 4. Which variables are important in predicting survival under bagging and random forest? 
@@ -42,7 +47,7 @@ Use the command `randomForest` for bagging and random forest. Remember to change
 Use the command `varImpPlot` or use `ggplot` as in Examples 11 and 12 in Week 4 lecture note.
 `r unhide()`
 
-5. Use the built model for predicting the test data `titanic_test`. 
+5. Use the built model to predict the test data `titanic_test`. 
 
 **Optional Task**
 
