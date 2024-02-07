@@ -1,6 +1,6 @@
 welcome-to-dmml-lab-4
 classification-trees
+pruning
 bagging-and-random-forests
 exercise-1-crabs-data
-pruning
 exercise-2-titanic-data
